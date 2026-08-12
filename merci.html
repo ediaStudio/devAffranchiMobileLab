@@ -26,15 +26,12 @@ p strong{color:var(--text);font-weight:500}
 .next{margin:26px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;display:grid;gap:6px}
 .next .mono{color:var(--muted)}
 .next b{font-size:1.15rem;font-weight:500}
-.actions{display:grid;gap:12px;margin-bottom:24px}
-.btn{display:block;text-align:center;text-decoration:none;padding:16px 24px;border-radius:2px;font-weight:700;min-height:44px}
-.btn-primary{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent)}
-.btn-primary:hover{background:#ffb857}
-.btn-ghost{color:var(--text);border:1px solid var(--line)}
-.btn-ghost:hover{border-color:var(--accent)}
-.btn:focus-visible{outline:2px solid var(--text);outline-offset:3px}
-.mail-note{font-size:.92rem;color:var(--muted)}
-.mail-note b{color:var(--text);font-weight:500}
+.steps{display:grid;gap:12px;margin:0 0 26px}
+.step{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start}
+.step .n{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:1rem}
+.step p{margin:0;color:var(--muted)}
+.step p b{color:var(--text);font-weight:500}
+.mail-note{font-size:.92rem;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -51,45 +48,24 @@ p strong{color:var(--text);font-weight:500}
     <span class="mono">Durée · 60 minutes · Google Meet</span>
   </div>
 
-  <div class="actions">
-    <a class="btn btn-primary" href="#" data-meet>Rejoindre le Meet</a>
-    <a class="btn btn-ghost" href="#" data-calendar>Ajouter les appels à mon calendrier</a>
+  <div class="steps">
+    <div class="step"><span class="n">01</span><p><b>Ouvre ta boîte mail.</b> Le lien Google Meet et le lien du calendrier viennent d'arriver dans ton mail de confirmation.</p></div>
+    <div class="step"><span class="n">02</span><p><b>Ajoute les appels à ton calendrier</b> avec le lien contenu dans le mail, pour ne jamais rater un samedi.</p></div>
+    <div class="step"><span class="n">03</span><p><b>Un rappel arrive chaque vendredi</b> avec le lien du call du lendemain.</p></div>
   </div>
 
-  <p class="mail-note">Un mail de confirmation vient d'arriver avec les mêmes liens, au cas où tu les perdrais.</p>
+  <p class="mail-note">Tu ne vois rien dans les cinq minutes ? Vérifie les spams, puis écris-moi : contact@devaffranchi.com</p>
 </div>
 
 <script>
 // ---------------------------------------------------------------
-// Renseigne ces trois valeurs (elles sont aussi dans index.html et README)
+// SECURITE : aucun lien d'acces n'est affiche sur cette page publique.
+// Le lien Meet et le lien calendrier ne sont delivres que par mail
+// (webhook Stripe -> Resend) et dans les rappels hebdomadaires.
 // ---------------------------------------------------------------
-const MEET_URL = "";       // lien Google Meet récurrent de l'evenement du samedi
-const CALENDAR_URL = "";   // lien public de l'evenement Google Calendar (ou lien .ics)
-const CALL_TIME = "Samedi à 10h00"; // affiche l'heure du prochain call
-
 var timeEl = document.querySelector("[data-time]");
+var CALL_TIME = "Samedi à 10h00"; // affiche l'heure du prochain call
 if (CALL_TIME) timeEl.textContent = CALL_TIME;
-
-var meetBtn = document.querySelector("[data-meet]");
-if (MEET_URL) {
-  meetBtn.setAttribute("href", MEET_URL);
-  meetBtn.setAttribute("target", "_blank");
-  meetBtn.setAttribute("rel", "noopener");
-} else {
-  meetBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    alert("Lien Meet pas encore configure : renseigne MEET_URL dans merci.html");
-  });
-}
-
-var calBtn = document.querySelector("[data-calendar]");
-if (CALENDAR_URL) {
-  calBtn.setAttribute("href", CALENDAR_URL);
-  calBtn.setAttribute("target", "_blank");
-  calBtn.setAttribute("rel", "noopener");
-} else {
-  calBtn.style.display = "none";
-}
 </script>
 
 </body>
