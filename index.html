@@ -316,22 +316,22 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <script>
 // ---------------------------------------------------------------
-// Le bouton passe par le Worker de paiement qui cree la Checkout
-// Session Stripe (29$/mois) puis redirige vers Stripe. Apres
-// paiement, Stripe renvoie vers merci.html?session_id=... qui
-// verifie et affiche les liens d'acces.
+// Bouton direct vers le Payment Link Stripe. Apres paiement,
+// Stripe affiche sa page de confirmation avec la description
+// du produit (le message custom avec les liens Meet + calendrier).
 // ---------------------------------------------------------------
-const WORKER_URL = ""; // ex: https://mobile-lab.your-subdomain.workers.dev
+const CHECKOUT_URL = ""; // https://buy.stripe.com/xxxx
 
 document.querySelectorAll("[data-checkout]").forEach(function (el) {
-  el.addEventListener("click", function (e) {
-    if (!WORKER_URL) {
+  if (CHECKOUT_URL) {
+    el.setAttribute("href", CHECKOUT_URL);
+    el.setAttribute("rel", "noopener");
+  } else {
+    el.addEventListener("click", function (e) {
       e.preventDefault();
-      alert("Worker pas encore deploye : renseigne WORKER_URL dans index.html et merci.html");
-      return;
-    }
-    window.location.href = WORKER_URL + "/start";
-  });
+      alert("Lien Stripe pas encore configure : renseigne CHECKOUT_URL dans index.html");
+    });
+  }
 });
 </script>
 
