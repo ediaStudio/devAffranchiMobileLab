@@ -9,6 +9,7 @@
 <meta property="og:description" content="On passe ton app au crible, une heure trente, chaque samedi. 29$ par mois, sans engagement.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d0f12">
+<link rel="icon" type="image/png" href="assets/logo-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -46,12 +47,14 @@ a{color:inherit}
 /* header */
 header{border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
-.brand{font-weight:700;letter-spacing:-.01em}
+.brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.brand-logo{height:26px;width:auto;display:block}
 .brand span{color:var(--accent)}
 .bar .mono{color:var(--muted)}
 
 /* hero */
 .hero{padding-top:clamp(56px,9vw,104px);padding-bottom:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
+.hero-logo{height:clamp(56px,7vw,80px);width:auto;display:block;margin-bottom:24px}
 .kicker{color:var(--accent);margin-bottom:22px}
 h1{
   font-size:clamp(2.3rem,6.2vw,4.1rem);
@@ -163,7 +166,7 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <header>
   <div class="wrap bar">
-    <div class="brand">Dev Affranchi <span>/</span> Mobile Lab</div>
+    <div class="brand"><img class="brand-logo" src="assets/logo.png" alt="Mobile Lab">Dev Affranchi <span>/</span> Mobile Lab</div>
     <div class="mono">Samedi · 16h-17h30 (Paris)</div>
   </div>
 </header>
@@ -171,6 +174,7 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 <main>
 
 <div class="hero wrap">
+  <img class="hero-logo" src="assets/logo.png" alt="Mobile Lab">
   <div class="mono kicker">Appel de groupe hebdomadaire</div>
   <h1>On passe ton app au crible. Une heure trente. Chaque samedi.</h1>
   <p class="lede">Le Mobile Lab, c'est un appel où on ouvre les apps des membres une par une. Le paywall qui ne convertit pas, la fiche store que personne ne trouve, le MVP coincé à trois installs par jour. <strong>On regarde l'écran, on identifie le vrai blocage, tu repars avec une chose à changer dans la semaine.</strong></p>
