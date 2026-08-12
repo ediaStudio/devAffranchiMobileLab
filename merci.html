@@ -12,7 +12,7 @@
 <style>
 :root{
   --ink:#0d0f12;--ink-2:#14171c;--line:#262b33;--text:#e8e6e1;--muted:#9aa1ad;
-  --accent:#f0a13c;--accent-ink:#0d0f12;
+  --accent:#f0a13c;--accent-ink:#0d0f12;--err:#e07a6a;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--ink);color:var(--text);font-family:"Space Grotesk",system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
@@ -20,52 +20,106 @@ body{margin:0;background:var(--ink);color:var(--text);font-family:"Space Grotesk
 .card{max-width:560px;width:100%;background:var(--ink-2);border:1px solid var(--line);padding:clamp(32px,6vw,56px)}
 .badge{color:var(--accent);margin-bottom:22px;display:flex;align-items:center;gap:10px}
 .badge::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block}
+.badge.err{color:var(--err)}
+.badge.err::before{background:var(--err)}
 h1{font-size:clamp(1.7rem,4.5vw,2.3rem);line-height:1.12;letter-spacing:-.03em;margin:0 0 14px}
 p{margin:0 0 14px;color:var(--muted)}
 p strong{color:var(--text);font-weight:500}
 .next{margin:26px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;display:grid;gap:6px}
 .next .mono{color:var(--muted)}
 .next b{font-size:1.15rem;font-weight:500}
-.steps{display:grid;gap:12px;margin:0 0 26px}
-.step{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start}
-.step .n{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:1rem}
-.step p{margin:0;color:var(--muted)}
-.step p b{color:var(--text);font-weight:500}
+.actions{display:grid;gap:12px;margin-bottom:24px}
+.btn{display:block;text-align:center;text-decoration:none;padding:16px 24px;border-radius:2px;font-weight:700;min-height:44px}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent)}
+.btn-primary:hover{background:#ffb857}
+.btn-ghost{color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--text);outline-offset:3px}
 .mail-note{font-size:.92rem;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.hidden{display:none!important}
+#loading .spinner{width:22px;height:22px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
 <div class="card">
-  <div class="mono badge">Paiement confirmé</div>
-  <h1>C'est réglé. Rendez-vous samedi.</h1>
-  <p>Ton accès au Mobile Lab est actif. Ton app sera passée au crible à son tour, et tu repars avec une chose à changer dans la semaine. <strong>Tu peux annuler quand tu veux.</strong></p>
-
-  <div class="next">
-    <span class="mono">Prochain appel</span>
-    <b data-time>Samedi à 10h00</b>
-    <span class="mono">Durée · 60 minutes · Google Meet</span>
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Vérification de ton paiement...</p>
   </div>
 
-  <div class="steps">
-    <div class="step"><span class="n">01</span><p><b>Ouvre ta boîte mail.</b> Le lien Google Meet et le lien du calendrier viennent d'arriver dans ton mail de confirmation.</p></div>
-    <div class="step"><span class="n">02</span><p><b>Ajoute les appels à ton calendrier</b> avec le lien contenu dans le mail, pour ne jamais rater un samedi.</p></div>
-    <div class="step"><span class="n">03</span><p><b>Un rappel arrive chaque vendredi</b> avec le lien du call du lendemain.</p></div>
+  <div id="ok" class="hidden">
+    <div class="mono badge">Paiement confirmé</div>
+    <h1>C'est réglé. Rendez-vous samedi.</h1>
+    <p>Ton accès au Mobile Lab est actif. Ton app sera passée au crible à son tour, et tu repars avec une chose à changer dans la semaine. <strong>Tu peux annuler quand tu veux.</strong></p>
+    <div class="next">
+      <span class="mono">Prochain appel</span>
+      <b data-time>Samedi à 10h00</b>
+      <span class="mono">Durée · 60 minutes · Google Meet</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="#" data-meet target="_blank" rel="noopener">Rejoindre le Meet</a>
+      <a class="btn btn-ghost" href="#" data-calendar target="_blank" rel="noopener">Ajouter les appels à mon calendrier</a>
+    </div>
   </div>
 
-  <p class="mail-note">Tu ne vois rien dans les cinq minutes ? Vérifie les spams, puis écris-moi : contact@devaffranchi.com</p>
+  <div id="denied" class="hidden">
+    <div class="mono badge err">Accès refusé</div>
+    <h1>Paiement non confirmé.</h1>
+    <p>Cette page est réservée aux membres qui viennent de régler leur abonnement. Si tu as payé et que tu vois ce message, écris-moi : contact@devaffranchi.com</p>
+  </div>
+
+  <p class="mail-note" id="foot" style="display:none">Les liens ne sont affichés qu'après vérification du paiement. Ils ne circulent pas sur une page publique.</p>
 </div>
 
 <script>
 // ---------------------------------------------------------------
-// SECURITE : aucun lien d'acces n'est affiche sur cette page publique.
-// Le lien Meet et le lien calendrier ne sont delivres que par mail
-// (webhook Stripe -> Resend) et dans les rappels hebdomadaires.
+// Le Worker verifie la session Stripe et ne renvoie les liens
+// que si le paiement est confirme. Aucun lien en dur ici.
 // ---------------------------------------------------------------
+const WORKER_URL = ""; // ex: https://mobile-lab.your-subdomain.workers.dev
+const CALL_TIME = "Samedi à 10h00"; // affiche l'heure du prochain call
+
 var timeEl = document.querySelector("[data-time]");
-var CALL_TIME = "Samedi à 10h00"; // affiche l'heure du prochain call
 if (CALL_TIME) timeEl.textContent = CALL_TIME;
+
+var params = new URLSearchParams(window.location.search);
+var sessionId = params.get("session_id");
+
+function show(id) {
+  document.getElementById("loading").classList.add("hidden");
+  document.getElementById("ok").classList.add("hidden");
+  document.getElementById("denied").classList.add("hidden");
+  document.getElementById(id).classList.remove("hidden");
+}
+
+if (!sessionId) {
+  show("denied");
+} else if (!WORKER_URL) {
+  show("denied");
+} else {
+  fetch(WORKER_URL + "/links?session_id=" + encodeURIComponent(sessionId))
+    .then(function (res) {
+      if (!res.ok) throw new Error("denied");
+      return res.json();
+    })
+    .then(function (data) {
+      var meetBtn = document.querySelector("[data-meet]");
+      var calBtn = document.querySelector("[data-calendar]");
+      meetBtn.setAttribute("href", data.meet_url);
+      if (data.calendar_url) {
+        calBtn.setAttribute("href", data.calendar_url);
+      } else {
+        calBtn.classList.add("hidden");
+      }
+      show("ok");
+    })
+    .catch(function () {
+      show("denied");
+    });
+}
 </script>
 
 </body>

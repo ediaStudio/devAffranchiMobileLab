@@ -316,21 +316,22 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <script>
 // ---------------------------------------------------------------
-// 1. Colle ici ton lien de paiement Stripe (Payment Link récurrent 29$/mois)
+// Le bouton passe par le Worker de paiement qui cree la Checkout
+// Session Stripe (29$/mois) puis redirige vers Stripe. Apres
+// paiement, Stripe renvoie vers merci.html?session_id=... qui
+// verifie et affiche les liens d'acces.
 // ---------------------------------------------------------------
-const CHECKOUT_URL = "";
+const WORKER_URL = ""; // ex: https://mobile-lab.your-subdomain.workers.dev
 
 document.querySelectorAll("[data-checkout]").forEach(function (el) {
-  if (CHECKOUT_URL) {
-    el.setAttribute("href", CHECKOUT_URL);
-    el.setAttribute("rel", "noopener");
-  } else {
-    el.setAttribute("aria-disabled", "true");
-    el.addEventListener("click", function (e) {
+  el.addEventListener("click", function (e) {
+    if (!WORKER_URL) {
       e.preventDefault();
-      alert("Lien Stripe pas encore configure : renseigne CHECKOUT_URL dans index.html");
-    });
-  }
+      alert("Worker pas encore deploye : renseigne WORKER_URL dans index.html et merci.html");
+      return;
+    }
+    window.location.href = WORKER_URL + "/start";
+  });
 });
 </script>
 
