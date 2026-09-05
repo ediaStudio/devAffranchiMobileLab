@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mobile Lab · L'appel du samedi pour ton business digital</title>
-<meta name="description" content="Chaque samedi, 90 minutes pour lancer ou faire grandir ton app ou ton SaaS. Débutant ou produit qui stagne, retour direct et actions concrètes. 29€ par mois, sans engagement.">
+<meta name="description" content="Chaque samedi, 90 minutes pour lancer ou faire grandir ton app ou ton SaaS. Débutant ou produit qui stagne, retour direct et actions concrètes. 49€ par mois ou 490€ par an.">
 <meta property="og:title" content="Mobile Lab · L'appel du samedi pour lancer ton business digital">
-<meta property="og:description" content="De zéro ou avec un produit qui stagne : chaque samedi, on règle ce qui bloque ton app ou ton SaaS et tu repars avec une action. 29€ par mois, sans engagement.">
+<meta property="og:description" content="De zéro ou avec un produit qui stagne : chaque samedi, on règle ce qui bloque ton app ou ton SaaS et tu repars avec une action. 49€/mois ou 490€/an.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d0f12">
 <link rel="icon" type="image/png" href="assets/logo-favicon.png">
@@ -136,6 +136,20 @@ h2{
 .incl li i{font-style:normal;color:var(--accent);font-family:"JetBrains Mono",monospace}
 .guarantee{border-left:0;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:.94rem;max-width:56ch}
 
+/* formules mensuel / annuel */
+.plans{display:grid;gap:20px}
+@media(min-width:820px){.plans{grid-template-columns:1fr 1fr}}
+.plan{background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3.5vw,36px);display:flex;flex-direction:column;align-items:flex-start}
+.plan--featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 44px rgba(240,161,60,.10)}
+.plan__badge{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:5px 10px;margin-bottom:16px}
+.plan__name{margin:0 0 2px;font-size:1.02rem;font-weight:500;letter-spacing:-.01em}
+.plan .amount{margin-bottom:8px}
+.plan__note{color:var(--muted);font-size:.95rem;line-height:1.5;margin:0 0 26px;max-width:34ch}
+.plan .btn{margin-top:auto}
+.plans + .incl{margin-top:40px}
+.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn--ghost:hover{background:rgba(240,161,60,.10);color:var(--text);border-color:var(--accent)}
+
 /* faq */
 details{border-top:1px solid var(--line);padding:20px 0}
 details:last-of-type{border-bottom:1px solid var(--line)}
@@ -179,8 +193,8 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
   <h1>Une app ou un SaaS qui te rapporte. Chaque samedi, on le fait avancer.</h1>
   <p class="lede">Le Mobile Lab, c'est le rendez-vous de celles et ceux qui veulent lancer un business digital : une app mobile ou un SaaS, et en vivre. Débutant complet ? On t'aide à choisir la bonne idée, à la construire et à la lancer. Produit déjà en ligne mais personne ne l'installe, ne s'y abonne ou ne paie ? On attaque la promotion et la monétisation. <strong>Chaque samedi, on ouvre les projets un par un, on identifie le vrai blocage, et tu repars avec une chose à changer dans la semaine.</strong></p>
   <div class="cta-row">
-    <a class="btn" href="#" data-checkout>Rejoindre pour 29€ par mois</a>
-    <div class="btn-note">Sans engagement, tu annules quand tu veux. Remboursé si le premier appel ne te sert à rien.</div>
+    <a class="btn" href="#" data-checkout="monthly">Rejoindre pour 49€ par mois</a>
+    <div class="btn-note">49€ par mois, ou 490€ par an (2 mois offerts). Remboursé si le premier appel ne te sert à rien.</div>
   </div>
   <div class="specs mono">
     <div><b>Samedi</b> chaque semaine</div>
@@ -260,22 +274,28 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <section class="wrap">
   <h2>Le prix</h2>
-  <p class="sub">Un seul tarif, mensuel. Pas d'offre à trois niveaux, pas de faux prix barré.</p>
-  <div class="price-block">
-    <div class="price-side">
-      <p class="amount"><span class="num">29€</span><span class="per">par mois</span></p>
-      <span class="mono">Résiliable en un clic</span>
-      <a class="btn" href="#" data-checkout>Réserver ma place</a>
+  <p class="sub">Deux formules, le même accès au groupe. L'annuel revient à 41€ par mois.</p>
+  <div class="plans">
+    <div class="plan plan--featured">
+      <span class="plan__badge">2 mois offerts</span>
+      <h3 class="plan__name">Annuel</h3>
+      <p class="amount"><span class="num">490€</span><span class="per">pour 12 mois · 41€/mois</span></p>
+      <p class="plan__note">Pour ceux qui savent qu'ils restent : tu verrouilles ton tarif pour un an et tu ne penses plus à l'abonnement.</p>
+      <a class="btn" href="#" data-checkout="annual">Choisir l'annuel</a>
     </div>
-    <div>
-      <ul class="incl">
-        <li><i>01</i><span>L'appel de groupe chaque samedi, 90 minutes, en direct</span></li>
-        <li><i>02</i><span>Ton projet passé au crible à ton tour, de l'idée à la monétisation, autant de fois que tu veux</span></li>
-        <li><i>03</i><span>Le lien Google Meet et le calendrier affichés juste après le paiement</span></li>
-      </ul>
-      <p class="guarantee">Si le premier appel ne t'apporte rien, tu écris et je te rembourse dans les sept jours, sans discussion. Je préfère rendre 29€ que garder quelqu'un qui n'y trouve pas son compte.</p>
+    <div class="plan">
+      <h3 class="plan__name">Mensuel</h3>
+      <p class="amount"><span class="num">49€</span><span class="per">par mois</span></p>
+      <p class="plan__note">Résiliable en un clic, tu arrêtes quand tu veux. Sans engagement.</p>
+      <a class="btn btn--ghost" href="#" data-checkout="monthly">Choisir le mensuel</a>
     </div>
   </div>
+  <ul class="incl">
+    <li><i>01</i><span>L'appel de groupe chaque samedi, 90 minutes, en direct</span></li>
+    <li><i>02</i><span>Ton projet passé au crible à ton tour, de l'idée à la monétisation, autant de fois que tu veux</span></li>
+    <li><i>03</i><span>Le lien Google Meet et le calendrier affichés juste après le paiement</span></li>
+  </ul>
+  <p class="guarantee">Si le premier appel ne t'apporte rien, tu m'écris et je te rembourse dans les sept jours, sans discussion, quelle que soit la formule. Je préfère rendre l'argent que garder quelqu'un qui n'y trouve pas son compte.</p>
 </section>
 
 <section class="wrap">
@@ -303,7 +323,7 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
   <h2>Le vrai livrable, c'est un business qui génère pendant que tu dors.</h2>
   <p class="sub">La plupart des business digitaux ne meurent pas d'un problème technique. Ils meurent parce que personne n'a jamais dit à leur créateur ce qui n'allait pas, et parce que personne ne l'attendait au rendez-vous suivant. Ici, tu as les deux : un retour honnête chaque samedi, et un engagement à montrer que tu as livré.</p>
   <div class="cta-row">
-    <a class="btn" href="#" data-checkout>Rejoindre pour 29€ par mois</a>
+    <a class="btn" href="#" data-checkout="monthly">Rejoindre pour 49€ par mois</a>
     <div class="btn-note">Tu reçois le lien Meet immédiatement après le paiement.</div>
   </div>
 </section>
@@ -323,18 +343,13 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 // Stripe affiche sa page de confirmation avec la description
 // du produit (le message custom avec les liens Meet + calendrier).
 // ---------------------------------------------------------------
-const CHECKOUT_URL = "https://buy.stripe.com/28E5kD11DfdIcnx8XQ83C0H";
+const MONTHLY_URL = "https://buy.stripe.com/cNibJ1bGh2qW1ITgqi83C0I";
+const ANNUAL_URL = "https://buy.stripe.com/3cI8wPfWxe9Ecnxeia83C0J";
 
 document.querySelectorAll("[data-checkout]").forEach(function (el) {
-  if (CHECKOUT_URL) {
-    el.setAttribute("href", CHECKOUT_URL);
-    el.setAttribute("rel", "noopener");
-  } else {
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      alert("Lien Stripe pas encore configure : renseigne CHECKOUT_URL dans index.html");
-    });
-  }
+  var url = el.getAttribute("data-checkout") === "annual" ? ANNUAL_URL : MONTHLY_URL;
+  el.setAttribute("href", url);
+  el.setAttribute("rel", "noopener");
 });
 </script>
 
