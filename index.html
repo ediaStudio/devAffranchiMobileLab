@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile Lab · Complet, inscriptions fermées</title>
-<meta name="description" content="Le Mobile Lab est complet, les inscriptions sont fermées. Chaque samedi, 90 minutes pour lancer ou faire grandir ton app ou ton SaaS, avec un groupe Telegram privé pour tes questions en semaine.">
-<meta property="og:title" content="Mobile Lab · Complet, inscriptions fermées">
-<meta property="og:description" content="Groupe complet, les inscriptions sont fermées. Chaque samedi, on règle ce qui bloque ton app ou ton SaaS, et le groupe Telegram privé sert à débloquer en semaine.">
+<title>Développeur apps mobiles, SaaS et agents IA · Dev Affranchi</title>
+<meta name="description" content="Développeur indépendant, 10 ans de code. Je construis ton app mobile, ton SaaS ou ton agent IA jusqu'à la mise en ligne. Réserve un créneau pour en parler.">
+<meta property="og:title" content="Apps mobiles, SaaS et agents IA · Dev Affranchi">
+<meta property="og:description" content="Développeur indépendant, 10 ans de code. Je construis ton app, ton SaaS ou ton agent IA jusqu'à la mise en ligne. Réserve un créneau.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d0f12">
 <link rel="icon" type="image/png" href="assets/logo-favicon.png">
@@ -22,14 +22,13 @@
   --text:#e8e6e1;
   --muted:#9aa1ad;
   --accent:#f0a13c;
+  --accent-soft:rgba(240,161,60,.10);
   --accent-ink:#0d0f12;
-  --ok:#7fc98a;
-  --no:#7a828f;
   --maxw:1080px;
   --pad:clamp(20px,5vw,48px);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;
   background:var(--ink);
@@ -43,36 +42,31 @@ body{
 a{color:inherit}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+section[id]{scroll-margin-top:24px}
 
 /* header */
-header{border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
-.brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+header{border-bottom:1px solid var(--line);background:var(--ink)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-logo{height:26px;width:auto;display:block}
-.brand span{color:var(--accent)}
-.bar .mono{color:var(--muted)}
+.brand .slash{color:var(--accent)}
+.brand-sub{color:var(--muted);font-weight:400;font-size:.92rem;display:none}
+@media(min-width:640px){.brand-sub{display:inline}}
+.nav{display:none;gap:26px;margin-left:auto}
+@media(min-width:900px){.nav{display:flex}}
+.nav a{text-decoration:none;color:var(--muted);font-size:.94rem}
+.nav a:hover{color:var(--text)}
+.bar .btn--sm{display:none}
+@media(min-width:560px){.bar .btn--sm{display:inline-block}}
 
-/* hero */
-.hero{padding-top:clamp(56px,9vw,104px);padding-bottom:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
-.hero-logo{height:clamp(56px,7vw,80px);width:auto;display:block;margin-bottom:24px}
-.kicker{color:var(--accent);margin-bottom:22px}
-h1{
-  font-size:clamp(2.3rem,6.2vw,4.1rem);
-  line-height:1.03;
-  letter-spacing:-.035em;
-  font-weight:700;
-  margin:0 0 24px;
-  max-width:20ch;
-}
-.lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--muted);max-width:56ch;margin:0 0 36px}
-.lede strong{color:var(--text);font-weight:500}
-.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:18px 22px}
+/* buttons */
 .btn{
   display:inline-block;
   background:var(--accent);
   color:var(--accent-ink);
   font-weight:700;
   font-size:1.02rem;
+  line-height:1.2;
   text-decoration:none;
   padding:16px 28px;
   border-radius:2px;
@@ -82,276 +76,312 @@ h1{
 }
 .btn:hover{background:#ffb857;transform:translateY(-1px)}
 .btn:focus-visible{outline:2px solid var(--text);outline-offset:3px}
-.btn-note{color:var(--muted);font-size:.9rem;max-width:30ch}
-.specs{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}
-.specs b{color:var(--text);font-weight:500}
+.btn--sm{padding:11px 18px;font-size:.92rem}
+.btn-note{color:var(--muted);font-size:.9rem;max-width:36ch}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
 
-/* generic section */
-section{padding-top:clamp(56px,8vw,92px);padding-bottom:clamp(56px,8vw,92px);border-bottom:1px solid var(--line)}
-h2{
-  font-size:clamp(1.7rem,3.4vw,2.5rem);
-  line-height:1.1;
-  letter-spacing:-.028em;
+/* hero */
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;opacity:.22;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 78%);
+  mask-image:linear-gradient(to bottom,#000 0%,transparent 78%);
+}
+.hero .wrap{position:relative;z-index:1;padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(48px,6vw,80px)}
+.hero-grid{display:grid;gap:44px}
+@media(min-width:900px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:end}}
+.kicker{color:var(--accent);margin:0 0 20px}
+h1{
+  font-size:clamp(2.35rem,5.8vw,3.9rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
   font-weight:700;
-  margin:0 0 12px;
+  margin:0 0 22px;
   max-width:20ch;
 }
-.sub{color:var(--muted);max-width:54ch;margin:0 0 44px}
+.lede{font-size:clamp(1.02rem,1.5vw,1.16rem);color:var(--muted);max-width:54ch;margin:0 0 32px}
+.lede strong{color:var(--text);font-weight:500}
 
-/* agenda */
-.agenda{display:grid;gap:0}
-.slot{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:8px 28px;
-  padding:26px 0;
-  border-top:1px solid var(--line);
-  align-items:start;
+/* fiche technique */
+.spec-card{background:var(--ink-2);border:1px solid var(--line);padding:0 22px 8px;margin:0}
+.spec-title{color:var(--accent);padding:16px 0 14px;border-bottom:1px solid var(--line)}
+.spec-card dl{margin:0}
+.spec-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.74rem;line-height:1.45}
+.spec-row:last-child{border-bottom:none}
+.spec-row dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.spec-row dd{margin:0}
+@media(max-width:420px){.spec-row{grid-template-columns:1fr;gap:2px}}
+
+/* sections */
+section{padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
+.section-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,44px)}
+@media(min-width:820px){.section-head{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:end}}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.08;letter-spacing:-.028em;font-weight:700;margin:0;max-width:22ch}
+.sub{color:var(--muted);max-width:58ch;margin:0}
+
+/* services */
+.svc{border-top:1px solid var(--line)}
+.svc-row{display:grid;gap:16px;padding:clamp(26px,4vw,40px) 0;border-bottom:1px solid var(--line)}
+@media(min-width:880px){.svc-row{grid-template-columns:56px minmax(0,1.35fr) minmax(0,.75fr);gap:36px;align-items:start}}
+.svc-num{padding-top:5px;color:var(--accent);margin:0}
+.svc h3{margin:0 0 10px;font-size:clamp(1.25rem,2.2vw,1.6rem);letter-spacing:-.015em;font-weight:500}
+.svc p{margin:0;color:var(--muted);max-width:62ch}
+.svc-tags{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.svc-tags li::before{content:"+ ";color:var(--accent)}
+
+/* methode */
+.steps{display:grid;gap:0;border-top:1px solid var(--line)}
+@media(min-width:860px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.step{padding:26px 0;border-bottom:1px solid var(--line)}
+@media(min-width:860px){
+  .step{border-bottom:none;border-right:1px solid var(--line);padding:26px 24px 6px 0}
+  .step:last-child{border-right:none;padding-right:0}
+  .step:not(:first-child){padding-left:24px}
 }
-.slot:last-child{border-bottom:1px solid var(--line)}
-.slot-time{color:var(--accent);padding-top:4px;white-space:nowrap}
-.slot h3{margin:0 0 6px;font-size:1.16rem;font-weight:500;letter-spacing:-.01em}
-.slot p{margin:0;color:var(--muted);max-width:60ch}
+.step-num{color:var(--accent);margin:0 0 14px}
+.step h3{margin:0 0 8px;font-size:1.06rem;font-weight:500}
+.step p{margin:0;color:var(--muted);font-size:.95rem;max-width:34ch}
 
-/* fit */
-.fit{display:grid;grid-template-columns:1fr;gap:44px}
-@media(min-width:760px){.fit{grid-template-columns:1fr 1fr;gap:56px}}
-.fit h3{font-size:1.05rem;font-weight:500;margin:0 0 20px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.fit ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.fit li{display:grid;grid-template-columns:22px 1fr;gap:12px;color:var(--muted);align-items:start}
-.fit li b{color:var(--text);font-weight:500}
-.mark{font-family:"JetBrains Mono",monospace;line-height:1.5}
-.yes .mark{color:var(--ok)}
-.nope .mark{color:var(--no)}
+/* preuve */
+.proof{display:grid;gap:36px}
+@media(min-width:880px){.proof{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:start}}
+.proof p{color:var(--muted);max-width:56ch;margin:0 0 18px}
+.proof p strong{color:var(--text);font-weight:500}
+.facts{display:grid;gap:0;border-top:1px solid var(--line);margin-top:26px}
+.fact{display:grid;grid-template-columns:92px minmax(0,1fr);gap:18px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+.fact b{color:var(--accent);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
 
-/* price */
-.price-block{background:var(--ink-2);border:1px solid var(--line);padding:clamp(26px,4vw,44px);display:grid;gap:36px}
-@media(min-width:820px){.price-block{grid-template-columns:minmax(0,300px) 1fr;gap:56px;align-items:start}}
-.amount{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
-.amount .num{font-size:clamp(3rem,7vw,4.2rem);font-weight:700;letter-spacing:-.04em;line-height:1}
-.amount .per{color:var(--muted);font-size:1rem}
-.price-side .mono{color:var(--muted);display:block;margin-bottom:22px}
-.incl{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:13px}
-.incl li{display:grid;grid-template-columns:18px 1fr;gap:12px;align-items:start;color:var(--text)}
-.incl li i{font-style:normal;color:var(--accent);font-family:"JetBrains Mono",monospace}
-.guarantee{border-left:0;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:.94rem;max-width:56ch}
-
-/* formules mensuel / annuel */
-.plans{display:grid;gap:20px}
-@media(min-width:820px){.plans{grid-template-columns:1fr 1fr}}
-.plan{background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3.5vw,36px);display:flex;flex-direction:column;align-items:flex-start}
-.plan--featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 44px rgba(240,161,60,.10)}
-.plan__badge{font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:5px 10px;margin-bottom:16px}
-.plan__name{margin:0 0 2px;font-size:1.02rem;font-weight:500;letter-spacing:-.01em}
-.plan .amount{margin-bottom:8px}
-.plan__note{color:var(--muted);font-size:.95rem;line-height:1.5;margin:0 0 26px;max-width:34ch}
-.plan .btn{margin-top:auto}
-.plans + .incl{margin-top:40px}
-.btn--ghost{background:transparent;color:var(--text);border-color:var(--line)}
-.btn--ghost:hover{background:rgba(240,161,60,.10);color:var(--text);border-color:var(--accent)}
+/* ce que je ne fais pas */
+.nope{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.nope li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.nope .mark{font-family:"JetBrains Mono",ui-monospace,monospace;color:var(--accent);line-height:1.5}
+.nope b{color:var(--text);font-weight:500}
 
 /* faq */
 details{border-top:1px solid var(--line);padding:20px 0}
 details:last-of-type{border-bottom:1px solid var(--line)}
-summary{
-  cursor:pointer;list-style:none;font-weight:500;font-size:1.06rem;
-  display:flex;justify-content:space-between;gap:20px;align-items:center;
-}
+summary{cursor:pointer;list-style:none;font-weight:500;font-size:1.04rem;display:flex;justify-content:space-between;gap:20px;align-items:center}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:1.2rem}
-details[open] summary::after{content:"–"}
+summary::after{content:"+";color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:1.15rem}
+details[open] summary::after{content:"−"}
 summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-details p{color:var(--muted);margin:14px 0 0;max-width:62ch}
+details p{color:var(--muted);margin:14px 0 0;max-width:64ch}
 
-/* closing */
-.closing{text-align:left;border-bottom:none}
-.closing h2{max-width:22ch}
-.closing .sub{margin-bottom:34px}
+/* final */
+.final{background:var(--ink-2);border-bottom:none}
+.final h2{max-width:24ch;margin-bottom:14px}
+.final .sub{margin-bottom:30px}
 
-footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted)}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 24px}
+footer{padding:34px 0;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 24px;font-size:.92rem}
 footer a{text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--text);border-color:var(--accent)}
 
-/* inscriptions fermees */
-.closed-bar{background:rgba(240,161,60,.10);border-bottom:1px solid var(--line);color:var(--accent)}
-.closed-bar .wrap{padding-top:12px;padding-bottom:12px}
-.btn--closed{background:transparent;color:var(--muted);border-color:var(--line);cursor:default;pointer-events:none}
-.btn--closed:hover{background:transparent;transform:none;color:var(--muted)}
-
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 
-<div class="closed-bar">
-  <div class="wrap mono">Complet · inscriptions fermées</div>
-</div>
-
 <header>
   <div class="wrap bar">
-    <div class="brand"><img class="brand-logo" src="assets/logo.png" alt="Mobile Lab">Dev Affranchi <span>/</span> Mobile Lab</div>
-    <div class="mono">Samedi · 16h-17h30 (Paris)</div>
+    <a class="brand" href="/">
+      <img class="brand-logo" src="assets/logo.png" alt="">
+      Dev Affranchi <span class="slash">/</span> <span class="brand-sub">apps, SaaS et agents IA</span>
+    </a>
+    <nav class="nav">
+      <a href="#services">Ce que je construis</a>
+      <a href="#methode">La méthode</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn btn--sm" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
   </div>
 </header>
 
 <main>
 
-<div class="hero wrap">
-  <img class="hero-logo" src="assets/logo.png" alt="Mobile Lab">
-  <div class="mono kicker">Le résultat : des revenus qui tournent sans toi</div>
-  <h1>Une app ou un SaaS qui te rapporte. Chaque samedi, on le fait avancer.</h1>
-  <p class="lede">Le Mobile Lab, c'est le rendez-vous de celles et ceux qui veulent lancer un business digital : une app mobile ou un SaaS, et en vivre. Débutant complet ? On t'aide à choisir la bonne idée, à la construire et à la lancer. Produit déjà en ligne mais personne ne l'installe, ne s'y abonne ou ne paie ? On attaque la promotion et la monétisation. <strong>Chaque samedi, on ouvre les projets un par un, on identifie le vrai blocage, et tu repars avec une chose à changer dans la semaine.</strong></p>
-  <div class="cta-row">
-    <span class="btn btn--closed" aria-disabled="true">Complet, inscriptions fermées</span>
-    <div class="btn-note">Je ne prends plus de nouveaux membres pour le moment. Le groupe est complet.</div>
-  </div>
-  <div class="specs mono">
-    <div><b>Samedi</b> chaque semaine</div>
-    <div><b>16h-17h30</b> heure de Paris</div>
-    <div><b>Google Meet</b> lien à l'inscription</div>
-    <div><b>Telegram privé</b> questions en semaine</div>
-    <div><b>En français</b></div>
-  </div>
-</div>
-
-<section class="wrap">
-  <h2>Ce qui se passe pendant les 90 minutes</h2>
-  <p class="sub">Pas de cours magistral, pas de slides. Un atelier avec des gens qui construisent leur business en ce moment, des débutants aux produits lancés.</p>
-  <div class="agenda">
-    <div class="slot">
-      <div class="slot-time mono">00:00</div>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <h3>Tour de table</h3>
-        <p>Chacun dit où il en est : son idée, son produit, ce qui génère, ce qui bloque. Trente secondes par personne, on garde le rythme.</p>
+        <p class="mono kicker">Développeur indépendant · 10 ans de code</p>
+        <h1>Ton app mobile, ton SaaS ou ton agent IA.</h1>
+        <p class="lede">Je le construis de A à Z et je le mets en ligne : apps iOS et Android, SaaS avec abonnements, automatisations et agents IA branchés sur tes outils. <strong>Tu parles directement à celui qui écrit le code. Pas d'agence ni de commercial au milieu.</strong></p>
+        <div class="cta-row">
+          <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
+          <div class="btn-note">Un appel pour parler de ton projet. Si je ne suis pas la bonne personne, je te le dis.</div>
+        </div>
       </div>
-    </div>
-    <div class="slot">
-      <div class="slot-time mono">00:05</div>
-      <div>
-        <h3>Revue de produit en partage d'écran</h3>
-        <p>On passe les apps et SaaS des membres au crible en direct, avec un roulement : ceux qui n'ont pas encore montré le leur passent en priorité. Pas encore de produit ? Amène ton idée telle quelle, on te dit si elle vaut le coup et par où commencer. On dissèque ce qui t'empêche de générer : positionnement, onboarding, paywall, prix, acquisition, fiche store, tunnel d'abonnement, coûts d'un produit IA, archi si elle bloque. Et si ton projet ne passe pas ce samedi, les problèmes repérés sur les autres sont souvent les tiens : tu repars avec des actions quand même.</p>
-      </div>
-    </div>
-    <div class="slot">
-      <div class="slot-time mono">00:55</div>
-      <div>
-        <h3>Questions ouvertes</h3>
-        <p>Comment trouver tes premiers utilisateurs, refus Apple ou Google, RevenueCat qui déconne, Stripe qui bloque un paiement, un modèle IA qui bouffe la marge, quel prix mettre, comment automatiser ce qui te prend du temps, faut-il traduire. Tu poses, on répond avec des cas réels et des chiffres, pas des principes.</p>
-      </div>
-    </div>
-    <div class="slot">
-      <div class="slot-time mono">01:20</div>
-      <div>
-        <h3>Un engagement chacun</h3>
-        <p>Tu annonces la seule action qui fera avancer ton business cette semaine, devant les autres. C'est ce point qui fait la différence entre un groupe sympa et un groupe qui génère.</p>
+      <div class="spec-card">
+        <div class="spec-title mono">Fiche technique</div>
+        <dl>
+          <div class="spec-row"><dt>Profil</dt><dd>Développeur indépendant</dd></div>
+          <div class="spec-row"><dt>Expérience</dt><dd>10 ans, du mobile au SaaS</dd></div>
+          <div class="spec-row"><dt>Plateformes</dt><dd>iOS · Android · Web</dd></div>
+          <div class="spec-row"><dt>Stack</dt><dd>Angular · Ionic · Capacitor · Firebase</dd></div>
+          <div class="spec-row"><dt>Paiements</dt><dd>Stripe · RevenueCat</dd></div>
+          <div class="spec-row"><dt>IA</dt><dd>API Claude · OpenAI</dd></div>
+          <div class="spec-row"><dt>Livraison</dt><dd>Code, accès, documentation</dd></div>
+        </dl>
       </div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>Bloqué un mardi, tu ne traînes pas ça jusqu'à samedi</h2>
-  <p class="sub">Un appel par semaine, c'est le rythme de fond. Mais un problème qui t'immobilise trois jours, c'est trois jours de perdus sur ton produit.</p>
-  <p class="lede">L'abonnement comprend aussi l'accès à un <strong>groupe Telegram privé</strong>, réservé aux membres, sans supplément. Un bug qui te bloque depuis ce matin, une build refusée par Apple, un paywall qui ne convertit pas, un doute sur ton prix, une fiche store qui n'attire personne : tu écris dans le groupe et tu as une réponse en semaine. Je suis dedans, les autres membres aussi.</p>
-  <p class="lede">C'est souvent dix minutes d'échange qui débloquent ce qu'une semaine d'attente aurait laissé en place. <strong>Tu n'attends pas le samedi suivant pour repartir.</strong></p>
-</section>
-
-<section class="wrap">
-  <h2>La solitude tue plus de projets que le code.</h2>
-  <p class="sub">Un bug, ça se corrige. La motivation qui s'évapore en silence, personne ne la corrige à ta place. Quand tu construis seul, rien ni personne ne t'attend au rendez-vous suivant.</p>
-  <p class="lede">Au Mobile Lab, tu ne construis plus seul. Chaque samedi, on t'attend : moi, et d'autres builders sérieux et motivés qui montrent leur écran et leurs chiffres. Tu repars avec une action, tu reviens avec un résultat, et tu vois les autres livrer et avancer. <strong>On avance tous ensemble, et c'est bien plus dur de lâcher quand on sait qu'on te retrouve samedi prochain.</strong></p>
-</section>
-
-<section class="wrap">
-  <h2>À qui ça sert vraiment</h2>
-  <p class="sub">Autant être clair tout de suite, ça évite un remboursement des deux côtés.</p>
-  <div class="fit">
-    <div class="yes">
-      <h3 class="mono">C'est pour toi si</h3>
-      <ul>
-        <li><span class="mark">[+]</span><span>Tu veux <b>un business digital qui génère</b> : une app mobile ou un SaaS, pour viser l'indépendance financière et géographique.</span></li>
-        <li><span class="mark">[+]</span><span>Tu débutes, <b>zéro idée, zéro expérience</b> : on t'aide à choisir, à construire et à lancer.</span></li>
-        <li><span class="mark">[+]</span><span>Tu as <b>un produit lancé qui stagne</b> : pas d'utilisateurs, pas de revenus, la promo et la monétisation qui coincent.</span></li>
-        <li><span class="mark">[+]</span><span>Tu veux <b>maîtriser l'IA</b> pour construire plus vite que ceux qui l'ignorent.</span></li>
-        <li><span class="mark">[+]</span><span>Tu veux qu'on te dise <b>ce qui cloche</b> plutôt que t'entendre dire que c'est prometteur.</span></li>
-        <li><span class="mark">[+]</span><span>Tu es prêt à <b>montrer ton écran</b> et tes chiffres, même quand ils sont mauvais.</span></li>
-      </ul>
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ce que je construis</h2>
+      <p class="sub">Trois types de projets, le même principe : un périmètre écrit, des livraisons chaque semaine, un produit en ligne à la fin.</p>
     </div>
-    <div class="nope">
-      <h3 class="mono">Passe ton chemin si</h3>
-      <ul>
-        <li><span class="mark">[–]</span><span>Tu veux <b>du revenu passif sans rien construire</b>. Ça n'existe pas, et je ne le vendrai pas.</span></li>
-        <li><span class="mark">[–]</span><span>Tu attends <b>une promesse de richesse rapide</b>. Tu n'en trouveras pas ici.</span></li>
-        <li><span class="mark">[–]</span><span>Tu ne peux <b>jamais être là le samedi</b>. Le live est tout l'intérêt, sinon tu paies pour rien.</span></li>
-        <li><span class="mark">[–]</span><span>Tu veux <b>que quelqu'un code à ta place</b>. On donne du retour, pas de la sous-traitance.</span></li>
-      </ul>
+    <div class="svc">
+      <div class="svc-row">
+        <p class="svc-num mono">01</p>
+        <div>
+          <h3>Application mobile</h3>
+          <p>Une app iOS et Android à partir d'une seule base de code, publiée sur les deux stores. Comptes utilisateurs, notifications, achats intégrés, abonnements, et de l'IA quand elle sert vraiment l'utilisateur.</p>
+        </div>
+        <ul class="svc-tags">
+          <li>iOS et Android</li>
+          <li>Publication App Store et Google Play</li>
+          <li>Abonnements in-app</li>
+          <li>Notifications et analytics</li>
+        </ul>
+      </div>
+      <div class="svc-row">
+        <p class="svc-num mono">02</p>
+        <div>
+          <h3>SaaS</h3>
+          <p>Un produit web complet : création de compte, plans et abonnements Stripe, tableau de bord, back-office, emails transactionnels. Déployé sur ton domaine, pas laissé sur un serveur de test.</p>
+        </div>
+        <ul class="svc-tags">
+          <li>Authentification</li>
+          <li>Abonnements Stripe</li>
+          <li>Dashboard et back-office</li>
+          <li>Déploiement et domaine</li>
+        </ul>
+      </div>
+      <div class="svc-row">
+        <p class="svc-num mono">03</p>
+        <div>
+          <h3>Automatisation et agent IA</h3>
+          <p>Un agent qui répond à tes clients, qualifie tes leads, trie tes documents ou relie tes outils entre eux. Branché sur leurs API, avec des garde-fous, des logs et un coût par requête que tu peux suivre.</p>
+        </div>
+        <ul class="svc-tags">
+          <li>API Claude et OpenAI</li>
+          <li>Webhooks et tâches planifiées</li>
+          <li>Garde-fous et logs</li>
+          <li>Suivi du coût par requête</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="methode">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Comment ça se passe</h2>
+      <p class="sub">Pas de tunnel de six mois. On part d'un périmètre court, on livre vite, et on élargit une fois que le produit tourne.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <p class="step-num mono">01</p>
+        <h3>L'appel</h3>
+        <p>On parle de ton projet, de ce qui existe déjà et de ce qui te bloque. Je te dis si c'est faisable, dans quel ordre, et si je suis la bonne personne.</p>
+      </div>
+      <div class="step">
+        <p class="step-num mono">02</p>
+        <h3>Le cadrage</h3>
+        <p>Je te remets un périmètre écrit : ce que je livre, ce que je ne livre pas, le délai et le prix. Tu valides avant que j'écrive la première ligne.</p>
+      </div>
+      <div class="step">
+        <p class="step-num mono">03</p>
+        <h3>La construction</h3>
+        <p>Je livre chaque semaine quelque chose qui tourne, pas des slides. Tu testes sur ton téléphone, tu donnes ton avis, on ajuste.</p>
+      </div>
+      <div class="step">
+        <p class="step-num mono">04</p>
+        <h3>La mise en ligne</h3>
+        <p>Publication sur les stores ou déploiement en production. Puis le repo, les accès et la doc. Le code t'appartient.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>Le prix</h2>
-  <p class="sub">Le groupe est complet et les inscriptions sont fermées. Les deux formules restent affichées pour information.</p>
-  <div class="plans">
-    <div class="plan plan--featured">
-      <span class="plan__badge">2 mois offerts</span>
-      <h3 class="plan__name">Annuel</h3>
-      <p class="amount"><span class="num">490€</span><span class="per">pour 12 mois · 41€/mois</span></p>
-      <p class="plan__note">Pour ceux qui savent qu'ils restent : tu verrouilles ton tarif pour un an et tu ne penses plus à l'abonnement.</p>
-      <span class="btn btn--closed" aria-disabled="true">Complet</span>
+<section>
+  <div class="wrap proof">
+    <div>
+      <h2>Tu parles à celui qui code.</h2>
     </div>
-    <div class="plan">
-      <h3 class="plan__name">Mensuel</h3>
-      <p class="amount"><span class="num">49€</span><span class="per">par mois</span></p>
-      <p class="plan__note">Résiliable en un clic, tu arrêtes quand tu veux. Sans engagement.</p>
-      <span class="btn btn--ghost btn--closed" aria-disabled="true">Complet</span>
+    <div>
+      <p>Je travaille seul. Pas d'équipe à nourrir, pas de chef de projet qui transmet mal ce que tu as dit. <strong>Ce que tu m'expliques le lundi, c'est dans le build le mercredi.</strong></p>
+      <p>Je construis et j'exploite mes propres produits depuis des années : un SaaS pour les réparateurs de smartphones en France, un outil d'automatisation ASO, des apps mobiles avec de l'IA embarquée. Je connais le coût réel d'un produit, pas seulement le code.</p>
+      <div class="facts">
+        <div class="fact"><b>En prod</b><span>mes propres produits, pas seulement ceux des clients</span></div>
+        <div class="fact"><b>Solo</b><span>une seule personne à qui parler, celle qui livre</span></div>
+        <div class="fact"><b>De A à Z</b><span>du cadrage à la mise en ligne</span></div>
+      </div>
     </div>
   </div>
-  <ul class="incl">
-    <li><i>01</i><span>L'appel de groupe chaque samedi, 90 minutes, en direct</span></li>
-    <li><i>02</i><span>Ton projet passé au crible à ton tour, de l'idée à la monétisation, autant de fois que tu veux</span></li>
-    <li><i>03</i><span>Le groupe Telegram privé, pour poser tes questions en semaine entre deux appels</span></li>
-    <li><i>04</i><span>Les liens Google Meet et Telegram, plus le calendrier, affichés juste après le paiement</span></li>
-  </ul>
-  <p class="guarantee">Si le premier appel ne t'apporte rien, tu m'écris et je te rembourse dans les sept jours, sans discussion, quelle que soit la formule. Je préfère rendre l'argent que garder quelqu'un qui n'y trouve pas son compte.</p>
 </section>
 
-<section class="wrap">
-  <h2>Les questions qui reviennent</h2>
-  <p class="sub"></p>
-  <details>
-    <summary>Peut-on encore s'inscrire ?</summary>
-    <p>Non, le groupe est complet et je ne prends plus de nouveaux membres pour le moment. La page reste en ligne pour montrer comment le Mobile Lab fonctionne.</p>
-  </details>
-  <details>
-    <summary>Je débute, je n'ai encore rien lancé, c'est pour moi ?</summary>
-    <p>Oui, c'est fait pour ça. Débutant complet, on t'aide à choisir une idée réaliste, à la valider et à faire tes premiers pas, sans théorie inutile. Produit déjà lancé mais la promo ou la monétisation coincent ? On attaque ça directement. Le Mobile Lab s'adresse aux deux : les blocages se ressemblent, un produit que personne ne voit, un prix qui ne convertit pas.</p>
-  </details>
-  <details>
-    <summary>Quel niveau technique ?</summary>
-    <p>Peu importe la stack et le niveau. On parle React Native, Flutter, Next.js, Firebase, Supabase, RevenueCat, Stripe, AdMob, les API Claude et OpenAI, tout ce qui permet de sortir un produit. Si tu débutes, tu apprends en construisant, avec l'IA comme accélérateur. Ce qui compte, c'est de livrer, pas ton nombre d'années d'expérience.</p>
-  </details>
-  <details>
-    <summary>Tu garantis que ça va me rapporter ?</summary>
-    <p>Non. Je te garantis un rendez-vous chaque samedi, un retour direct sur ton produit et un rythme qui te force à livrer. Ceux qui te garantissent des revenus te mentent ; ici, on les construit.</p>
-  </details>
-  <details>
-    <summary>Le groupe Telegram, ça marche comment ?</summary>
-    <p>Tu reçois le lien d'invitation à l'inscription, avec celui du Google Meet. C'est un groupe privé, réservé aux membres : tu poses tes questions en semaine, je réponds, et les autres membres aussi. Il ne remplace pas l'appel du samedi, c'est là que ton projet passe au crible en direct.</p>
-  </details>
-  <details>
-    <summary>Comment j'annule ?</summary>
-    <p>Tu m'écris (<a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a>), j'annule dans les 24h, sans question. Tu gardes l'accès jusqu'à la fin du mois payé.</p>
-  </details>
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ce que je ne fais pas</h2>
+      <p class="sub">Autant le dire tout de suite, ça évite un appel inutile des deux côtés.</p>
+    </div>
+    <ul class="nope">
+      <li><span class="mark">[–]</span><span><b>Des sites vitrines et des refontes graphiques.</b> Ce n'est pas mon métier, et quelqu'un d'autre le fera mieux.</span></li>
+      <li><span class="mark">[–]</span><span><b>Les missions où je parle à un intermédiaire.</b> Le client final doit être dans la conversation, sinon le projet part de travers.</span></li>
+      <li><span class="mark">[–]</span><span><b>Les projets sans périmètre ni budget.</b> On peut commencer petit, mais on commence cadré.</span></li>
+    </ul>
+  </div>
 </section>
 
-<section class="wrap closing">
-  <h2>Le vrai livrable, c'est un business qui génère pendant que tu dors.</h2>
-  <p class="sub">La plupart des business digitaux ne meurent pas d'un problème technique. Ils meurent parce que personne n'a jamais dit à leur créateur ce qui n'allait pas, et parce que personne ne l'attendait au rendez-vous suivant. Ici, tu as les deux : un retour honnête chaque samedi, et un engagement à montrer que tu as livré.</p>
-  <div class="cta-row">
-    <span class="btn btn--closed" aria-disabled="true">Complet, inscriptions fermées</span>
-    <div class="btn-note">Merci à ceux qui en font partie.</div>
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Les questions qui reviennent</h2>
+      <p class="sub">Et si la tienne n'y est pas, pose-la à l'appel.</p>
+    </div>
+    <details>
+      <summary>Combien coûte un projet ?</summary>
+      <p>Ça dépend du périmètre, et je ne donne pas de chiffre au hasard. Après l'appel et le cadrage, tu reçois un montant fixe avec ce qui est inclus. Si le projet évolue, on fait un avenant, pas une facture surprise.</p>
+    </details>
+    <details>
+      <summary>Combien de temps ?</summary>
+      <p>Une app simple peut être en ligne en quelques semaines. Un SaaS avec abonnements et back-office prend plus longtemps. Je te donne un délai au cadrage et je te préviens dès qu'il y a un risque de dérapage.</p>
+    </details>
+    <details>
+      <summary>Qui code ?</summary>
+      <p>Moi. Je peux travailler avec un designer pour l'interface, mais le code et les décisions techniques sont les miens.</p>
+    </details>
+    <details>
+      <summary>À qui appartient le code, et après la livraison ?</summary>
+      <p>Le code t'appartient. Je te livre le repo, les accès aux services et la documentation. Pour la suite, on décide au cadrage : je peux assurer les mises à jour et les évolutions, ou te laisser autonome avec la doc.</p>
+    </details>
+    <details>
+      <summary>Tu peux ajouter de l'IA à un produit existant ?</summary>
+      <p>Oui. Un agent ou une automatisation peut se brancher sur un produit déjà en ligne sans tout réécrire. C'est souvent le projet le plus rapide à mettre en place.</p>
+    </details>
+    <details>
+      <summary>Tu reprends un projet commencé par quelqu'un d'autre ?</summary>
+      <p>Oui, après un audit du code. Je te dis ce qui est récupérable et ce qu'il faut refaire, sans te vendre une réécriture complète par principe.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Un projet en tête ?</h2>
+    <p class="sub">Réserve un créneau. On parle de ton idée, de ton produit ou de ce qui bloque. Tu repars avec un avis franc, même si on ne travaille pas ensemble.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
+      <div class="btn-note">Réservation en ligne, tu choisis le créneau qui t'arrange.</div>
+    </div>
   </div>
 </section>
 
@@ -359,8 +389,8 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <footer>
   <div class="wrap foot">
-    <div>Dev Affranchi · Mobile Lab</div>
-    <div><a href="https://www.youtube.com/@devaffranchi">La chaîne YouTube</a> · <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a></div>
+    <div>Dev Affranchi · apps mobiles, SaaS et agents IA</div>
+    <div><a href="https://www.youtube.com/@devaffranchi">YouTube</a> · <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a></div>
   </div>
 </footer>
 
