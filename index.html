@@ -52,10 +52,12 @@ header{border-bottom:1px solid var(--line);background:var(--ink)}
 .brand .slash{color:var(--accent)}
 .brand-sub{color:var(--muted);font-weight:400;font-size:.92rem;display:none}
 @media(min-width:640px){.brand-sub{display:inline}}
-.nav{display:none;gap:26px;margin-left:auto}
-@media(min-width:900px){.nav{display:flex}}
-.nav a{text-decoration:none;color:var(--muted);font-size:.94rem}
+.nav{display:flex;flex-wrap:wrap;gap:10px 22px;order:3;width:100%;padding-top:12px;border-top:1px solid var(--line)}
+@media(min-width:900px){.nav{order:0;width:auto;margin-left:auto;padding-top:0;border-top:none}}
+.nav a{position:relative;text-decoration:none;color:var(--muted);font-size:.94rem;padding:2px 0;white-space:nowrap}
 .nav a:hover{color:var(--text)}
+.nav a[aria-current="page"]{color:var(--text)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--accent)}
 .bar .btn--sm{display:none}
 @media(min-width:560px){.bar .btn--sm{display:inline-block}}
 
@@ -190,10 +192,10 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
       <img class="brand-logo" src="assets/logo.png" alt="">
       Dev Affranchi <span class="slash">/</span> <span class="brand-sub">apps, webapps, SaaS et agents IA</span>
     </a>
-    <nav class="nav">
-      <a href="#services">Ce que je construis</a>
-      <a href="#methode">La méthode</a>
-      <a href="#faq">Questions</a>
+    <nav class="nav" aria-label="Services">
+      <a href="application-mobile.html">Application mobile</a>
+      <a href="saas.html">SaaS</a>
+      <a href="agent-ia.html">Agent IA</a>
     </nav>
     <a class="btn btn--sm" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
   </div>
