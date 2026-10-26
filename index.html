@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mobile Lab · L'appel du samedi pour ton business digital</title>
-<meta name="description" content="Chaque samedi, 90 minutes pour lancer ou faire grandir ton app ou ton SaaS. Débutant ou produit qui stagne, retour direct et actions concrètes. Un groupe Telegram privé pour tes questions en semaine. 49€ par mois ou 490€ par an.">
-<meta property="og:title" content="Mobile Lab · L'appel du samedi pour lancer ton business digital">
-<meta property="og:description" content="De zéro ou avec un produit qui stagne : chaque samedi, on règle ce qui bloque ton app ou ton SaaS et tu repars avec une action. Groupe Telegram privé pour débloquer en semaine. 49€/mois ou 490€/an.">
+<title>Mobile Lab · Complet, inscriptions fermées</title>
+<meta name="description" content="Le Mobile Lab est complet, les inscriptions sont fermées. Chaque samedi, 90 minutes pour lancer ou faire grandir ton app ou ton SaaS, avec un groupe Telegram privé pour tes questions en semaine.">
+<meta property="og:title" content="Mobile Lab · Complet, inscriptions fermées">
+<meta property="og:description" content="Groupe complet, les inscriptions sont fermées. Chaque samedi, on règle ce qui bloque ton app ou ton SaaS, et le groupe Telegram privé sert à débloquer en semaine.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0d0f12">
 <link rel="icon" type="image/png" href="assets/logo-favicon.png">
@@ -173,10 +173,20 @@ footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted)}
 footer a{text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--text);border-color:var(--accent)}
 
+/* inscriptions fermees */
+.closed-bar{background:rgba(240,161,60,.10);border-bottom:1px solid var(--line);color:var(--accent)}
+.closed-bar .wrap{padding-top:12px;padding-bottom:12px}
+.btn--closed{background:transparent;color:var(--muted);border-color:var(--line);cursor:default;pointer-events:none}
+.btn--closed:hover{background:transparent;transform:none;color:var(--muted)}
+
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+
+<div class="closed-bar">
+  <div class="wrap mono">Complet · inscriptions fermées</div>
+</div>
 
 <header>
   <div class="wrap bar">
@@ -193,8 +203,8 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
   <h1>Une app ou un SaaS qui te rapporte. Chaque samedi, on le fait avancer.</h1>
   <p class="lede">Le Mobile Lab, c'est le rendez-vous de celles et ceux qui veulent lancer un business digital : une app mobile ou un SaaS, et en vivre. Débutant complet ? On t'aide à choisir la bonne idée, à la construire et à la lancer. Produit déjà en ligne mais personne ne l'installe, ne s'y abonne ou ne paie ? On attaque la promotion et la monétisation. <strong>Chaque samedi, on ouvre les projets un par un, on identifie le vrai blocage, et tu repars avec une chose à changer dans la semaine.</strong></p>
   <div class="cta-row">
-    <a class="btn" href="#" data-checkout="monthly">Rejoindre pour 49€ par mois</a>
-    <div class="btn-note">49€ par mois, ou 490€ par an (2 mois offerts). Remboursé si le premier appel ne te sert à rien.</div>
+    <span class="btn btn--closed" aria-disabled="true">Complet, inscriptions fermées</span>
+    <div class="btn-note">Je ne prends plus de nouveaux membres pour le moment. Le groupe est complet.</div>
   </div>
   <div class="specs mono">
     <div><b>Samedi</b> chaque semaine</div>
@@ -282,20 +292,20 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 
 <section class="wrap">
   <h2>Le prix</h2>
-  <p class="sub">Deux formules, le même accès : l'appel du samedi et le groupe privé. L'annuel revient à 41€ par mois.</p>
+  <p class="sub">Le groupe est complet et les inscriptions sont fermées. Les deux formules restent affichées pour information.</p>
   <div class="plans">
     <div class="plan plan--featured">
       <span class="plan__badge">2 mois offerts</span>
       <h3 class="plan__name">Annuel</h3>
       <p class="amount"><span class="num">490€</span><span class="per">pour 12 mois · 41€/mois</span></p>
       <p class="plan__note">Pour ceux qui savent qu'ils restent : tu verrouilles ton tarif pour un an et tu ne penses plus à l'abonnement.</p>
-      <a class="btn" href="#" data-checkout="annual">Choisir l'annuel</a>
+      <span class="btn btn--closed" aria-disabled="true">Complet</span>
     </div>
     <div class="plan">
       <h3 class="plan__name">Mensuel</h3>
       <p class="amount"><span class="num">49€</span><span class="per">par mois</span></p>
       <p class="plan__note">Résiliable en un clic, tu arrêtes quand tu veux. Sans engagement.</p>
-      <a class="btn btn--ghost" href="#" data-checkout="monthly">Choisir le mensuel</a>
+      <span class="btn btn--ghost btn--closed" aria-disabled="true">Complet</span>
     </div>
   </div>
   <ul class="incl">
@@ -310,6 +320,10 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
 <section class="wrap">
   <h2>Les questions qui reviennent</h2>
   <p class="sub"></p>
+  <details>
+    <summary>Peut-on encore s'inscrire ?</summary>
+    <p>Non, le groupe est complet et je ne prends plus de nouveaux membres pour le moment. La page reste en ligne pour montrer comment le Mobile Lab fonctionne.</p>
+  </details>
   <details>
     <summary>Je débute, je n'ai encore rien lancé, c'est pour moi ?</summary>
     <p>Oui, c'est fait pour ça. Débutant complet, on t'aide à choisir une idée réaliste, à la valider et à faire tes premiers pas, sans théorie inutile. Produit déjà lancé mais la promo ou la monétisation coincent ? On attaque ça directement. Le Mobile Lab s'adresse aux deux : les blocages se ressemblent, un produit que personne ne voit, un prix qui ne convertit pas.</p>
@@ -336,8 +350,8 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
   <h2>Le vrai livrable, c'est un business qui génère pendant que tu dors.</h2>
   <p class="sub">La plupart des business digitaux ne meurent pas d'un problème technique. Ils meurent parce que personne n'a jamais dit à leur créateur ce qui n'allait pas, et parce que personne ne l'attendait au rendez-vous suivant. Ici, tu as les deux : un retour honnête chaque samedi, et un engagement à montrer que tu as livré.</p>
   <div class="cta-row">
-    <a class="btn" href="#" data-checkout="monthly">Rejoindre pour 49€ par mois</a>
-    <div class="btn-note">Tu reçois le lien Meet immédiatement après le paiement.</div>
+    <span class="btn btn--closed" aria-disabled="true">Complet, inscriptions fermées</span>
+    <div class="btn-note">Merci à ceux qui en font partie.</div>
   </div>
 </section>
 
@@ -349,22 +363,6 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
     <div><a href="https://www.youtube.com/@devaffranchi">La chaîne YouTube</a> · <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a></div>
   </div>
 </footer>
-
-<script>
-// ---------------------------------------------------------------
-// Bouton direct vers le Payment Link Stripe. Apres paiement,
-// Stripe affiche sa page de confirmation avec la description
-// du produit (le message custom avec les liens Meet + calendrier).
-// ---------------------------------------------------------------
-const MONTHLY_URL = "https://buy.stripe.com/cNibJ1bGh2qW1ITgqi83C0I";
-const ANNUAL_URL = "https://buy.stripe.com/3cI8wPfWxe9Ecnxeia83C0J";
-
-document.querySelectorAll("[data-checkout]").forEach(function (el) {
-  var url = el.getAttribute("data-checkout") === "annual" ? ANNUAL_URL : MONTHLY_URL;
-  el.setAttribute("href", url);
-  el.setAttribute("rel", "noopener");
-});
-</script>
 
 </body>
 </html>
