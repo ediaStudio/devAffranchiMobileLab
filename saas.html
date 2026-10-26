@@ -3,202 +3,102 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Développement de SaaS sur mesure · Dev Affranchi</title>
-<meta name="description" content="SaaS avec comptes, abonnements Stripe, dashboard et back-office. Conception, développement et déploiement. Réserve un créneau pour en parler.">
-<meta property="og:title" content="SaaS sur mesure : comptes, abonnements Stripe, dashboard · Dev Affranchi">
-<meta property="og:description" content="Comptes et rôles, abonnements Stripe, dashboard, back-office, emails et déploiement. Un produit en ligne, pas une démo.">
-<meta property="og:type" content="website">
+<title>En construction · Dev Affranchi</title>
+<meta name="description" content="Le site Dev Affranchi est en construction. Les pages services reviennent bientôt.">
+<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#0d0f12">
 <link rel="icon" type="image/png" href="assets/logo-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/pages.css?v=2">
+<style>
+:root{
+  --ink:#0d0f12;
+  --line:#262b33;
+  --text:#e8e6e1;
+  --muted:#9aa1ad;
+  --accent:#f0a13c;
+  --pad:clamp(20px,5vw,48px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--ink);
+  color:var(--text);
+  font-family:"Space Grotesk",system-ui,-apple-system,sans-serif;
+  font-size:clamp(16px,1.05vw,17px);
+  line-height:1.6;
+  text-wrap:pretty;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;opacity:.22;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 85%);
+  mask-image:linear-gradient(to bottom,#000 0%,transparent 85%);
+}
+.wrap{width:100%;max-width:860px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);position:relative;z-index:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+
+header{border-bottom:1px solid var(--line);position:relative;z-index:1}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;text-decoration:none;color:inherit}
+.brand-logo{height:26px;width:auto;display:block}
+.bar .mono{color:var(--muted)}
+
+main{flex:1;display:flex;align-items:center;padding-top:clamp(48px,10vh,96px);padding-bottom:clamp(48px,10vh,96px)}
+.kicker{color:var(--accent);margin:0 0 18px}
+h1{
+  font-size:clamp(2.8rem,9vw,5.2rem);
+  line-height:.98;
+  letter-spacing:-.04em;
+  font-weight:700;
+  margin:0 0 24px;
+  max-width:15ch;
+}
+.lede{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:48ch;margin:0}
+.lede a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent)}
+.lede a:hover{color:var(--accent)}
+.lede a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+footer{border-top:1px solid var(--line);position:relative;z-index:1}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-top:22px;padding-bottom:22px;color:var(--muted);font-size:.92rem}
+footer a{text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--text);border-color:var(--accent)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="index.html">
+    <a class="brand" href="/">
       <img class="brand-logo" src="assets/logo.png" alt="">
-      Dev Affranchi <span class="slash">/</span> <span class="brand-sub">apps, webapps, SaaS et agents IA</span>
+      Dev Affranchi
     </a>
-    <nav class="nav" aria-label="Services">
-      <a href="application-mobile.html">Application mobile</a>
-      <a href="saas.html" aria-current="page">SaaS</a>
-      <a href="agent-ia.html">Agent IA</a>
-    </nav>
-    <a class="btn btn--sm" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
+    <div class="mono">Travaux en cours</div>
   </div>
 </header>
 
 <main>
-
-<section class="page-hero">
   <div class="wrap">
-    <p class="mono kicker">Service · SaaS</p>
-    <h1>Un SaaS qui encaisse, pas une démo.</h1>
-    <p class="lede">Comptes, plans, abonnements Stripe, tableau de bord et back-office. On construit le produit, on le déploie sur ton domaine, et tu peux vendre dès la mise en ligne.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
-      <div class="btn-note">Un appel pour cadrer le produit. On parle du cœur, du prix et de ce qu'on lance d'abord.</div>
-    </div>
-    <div class="meta-strip mono">
-      <div><b>Abonnements</b> Stripe</div>
-      <div><b>Dashboard</b> et back-office</div>
-      <div><b>Déploiement</b> domaine et sauvegardes</div>
-    </div>
+    <p class="mono kicker">Site en travaux</p>
+    <h1>En construction.</h1>
+    <p class="lede">Le site revient bientôt. Les pages services sont en cours de mise à jour. Pour me joindre avant, écris à <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a>.</p>
   </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ce que ça couvre</h2>
-      <p class="sub">Les briques qu'un SaaS doit avoir pour tourner et pour être vendu. Pas de fonctionnalité posée là au cas où.</p>
-    </div>
-    <div class="deliverables">
-      <div class="deliverable">
-        <p class="num mono">01</p>
-        <div>
-          <h3>Comptes et rôles</h3>
-          <p>Inscription, connexion, mot de passe oublié, invitations d'équipe. Chaque utilisateur voit ce qu'il a le droit de voir, et rien d'autre.</p>
-        </div>
-      </div>
-      <div class="deliverable">
-        <p class="num mono">02</p>
-        <div>
-          <h3>Abonnements et paiements</h3>
-          <p>Plans, essais, changements d'offre, échecs de paiement, factures. Stripe gère l'argent, je branche le produit dessus.</p>
-        </div>
-      </div>
-      <div class="deliverable">
-        <p class="num mono">03</p>
-        <div>
-          <h3>Dashboard</h3>
-          <p>L'écran que tes utilisateurs ouvrent chaque jour : les données qui comptent, les actions possibles, et rien d'autre.</p>
-        </div>
-      </div>
-      <div class="deliverable">
-        <p class="num mono">04</p>
-        <div>
-          <h3>Back-office</h3>
-          <p>Un espace pour toi : voir les comptes, corriger une donnée, gérer les accès et suivre l'activité sans passer par la base.</p>
-        </div>
-      </div>
-      <div class="deliverable">
-        <p class="num mono">05</p>
-        <div>
-          <h3>Emails et notifications</h3>
-          <p>Bienvenue, confirmation, échec de paiement, relance. Les emails qui font revenir un utilisateur ou sauvent un abonnement.</p>
-        </div>
-      </div>
-      <div class="deliverable">
-        <p class="num mono">06</p>
-        <div>
-          <h3>Déploiement</h3>
-          <p>Domaine, HTTPS, sauvegardes, environnement de test et de production. Le produit tourne, pas seulement sur ta machine.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Comment ça se passe</h2>
-      <p class="sub">On lance une fonction qui fait payer, puis on élargit. Un SaaS qui attend d'être complet pour sortir ne sort jamais.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <p class="step-num mono">01</p>
-        <h3>Le cadrage</h3>
-        <p>On définit le cœur du produit, le plan de lancement et ce qu'on met de côté. Un SaaS se lance avec une fonction, pas avec dix.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">02</p>
-        <h3>Le build</h3>
-        <p>Chaque semaine, une version en ligne que tu peux utiliser. Tu testes avec de vrais utilisateurs dès que possible.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">03</p>
-        <h3>La monétisation</h3>
-        <p>On branche Stripe, les plans et les limites de chaque offre. On vérifie le parcours d'achat de bout en bout.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">04</p>
-        <h3>La mise en ligne</h3>
-        <p>Déploiement, domaine, sauvegardes. Puis le code, les accès et la documentation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ce que je ne fais pas</h2>
-      <p class="sub">Autant le dire tout de suite, ça évite un appel inutile des deux côtés.</p>
-    </div>
-    <ul class="nope">
-      <li><span class="mark">[–]</span><span><b>Les SaaS sans client défini.</b> Si tu ne sais pas qui paie et pourquoi, on ne code pas encore.</span></li>
-      <li><span class="mark">[–]</span><span><b>Les intégrations avec des outils sans API.</b> On peut contourner, mais je te le dis avant de commencer.</span></li>
-      <li><span class="mark">[–]</span><span><b>Les promesses de croissance.</b> Le produit se construit, les utilisateurs se trouvent après.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Les questions qui reviennent</h2>
-      <p class="sub">Et si la tienne n'y est pas, pose-la à l'appel.</p>
-    </div>
-    <details>
-      <summary>Combien de temps pour un SaaS ?</summary>
-      <p>Un MVP avec comptes, paiement et une fonction principale peut être en ligne en quelques semaines. Un produit avec plusieurs rôles et un back-office complet prend plus longtemps. Le planning est posé au cadrage.</p>
-    </details>
-    <details>
-      <summary>Stripe ou autre chose ?</summary>
-      <p>Stripe en priorité pour les abonnements et les paiements. Si tu as déjà un compte ou un besoin particulier, on s'adapte.</p>
-    </details>
-    <details>
-      <summary>Et l'hébergement ?</summary>
-      <p>Je déploie sur une plateforme adaptée au produit. Tu gardes le compte et le domaine à ton nom, et je te documente la mise en production.</p>
-    </details>
-    <details>
-      <summary>Je peux commencer avec un MVP ?</summary>
-      <p>Oui, et c'est souvent la bonne approche. On lance le parcours qui fait payer, on met le reste derrière.</p>
-    </details>
-    <details>
-      <summary>Qui gère la maintenance ?</summary>
-      <p>On décide au cadrage. Je peux prendre les évolutions et les correctifs, ou te laisser la main avec la documentation.</p>
-    </details>
-    <details>
-      <summary>Je peux vendre dès le premier jour ?</summary>
-      <p>Oui si le parcours de paiement est dans le périmètre. Je le prévois au cadrage, pas après.</p>
-    </details>
-  </div>
-</section>
-
-<section class="final">
-  <div class="wrap">
-    <h2>Ton SaaS, on le met en ligne ?</h2>
-    <p class="sub">Réserve un créneau. On parle de ton idée, de ton produit ou de ce qui bloque. Tu repars avec un avis franc, même si on ne travaille pas ensemble.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
-      <div class="btn-note">Réservation en ligne, tu choisis le créneau qui t'arrange.</div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer>
   <div class="wrap foot">
-    <div>Dev Affranchi · apps mobiles, webapps, SaaS et agents IA</div>
-    <div><a href="application-mobile.html">Application mobile</a> · <a href="saas.html">SaaS</a> · <a href="agent-ia.html">Agent IA</a> · <a href="https://www.youtube.com/@devaffranchi">YouTube</a> · <a href="mailto:devaffranchi@gmail.com">Email</a></div>
+    <div>Dev Affranchi</div>
+    <div><a href="https://www.youtube.com/@devaffranchi">YouTube</a> · <a href="mailto:devaffranchi@gmail.com">Email</a></div>
   </div>
 </footer>
 

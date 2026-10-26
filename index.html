@@ -3,11 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Développeur apps mobiles, webapps, SaaS et agents IA · Dev Affranchi</title>
-<meta name="description" content="Développeur et fondateur, 10 ans de code. On construit ton app mobile, ta webapp, ton SaaS ou ton agent IA jusqu'à la mise en ligne. Réserve un créneau.">
-<meta property="og:title" content="Apps mobiles, webapps, SaaS et agents IA · Dev Affranchi">
-<meta property="og:description" content="Développeur et fondateur, 10 ans de code. On construit ton app, ta webapp, ton SaaS ou ton agent IA jusqu'à la mise en ligne.">
-<meta property="og:type" content="website">
+<title>En construction · Dev Affranchi</title>
+<meta name="description" content="Le site Dev Affranchi est en construction. Les pages services reviennent bientôt.">
+<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#0d0f12">
 <link rel="icon" type="image/png" href="assets/logo-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,21 +14,19 @@
 <style>
 :root{
   --ink:#0d0f12;
-  --ink-2:#14171c;
-  --ink-3:#1b1f26;
   --line:#262b33;
   --text:#e8e6e1;
   --muted:#9aa1ad;
   --accent:#f0a13c;
-  --accent-soft:rgba(240,161,60,.10);
-  --accent-ink:#0d0f12;
-  --maxw:1080px;
   --pad:clamp(20px,5vw,48px);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
   background:var(--ink);
   color:var(--text);
   font-family:"Space Grotesk",system-ui,-apple-system,sans-serif;
@@ -38,150 +34,45 @@ body{
   line-height:1.6;
   text-wrap:pretty;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
-a{color:inherit}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
-section[id]{scroll-margin-top:24px}
-
-/* header */
-header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);background:var(--ink)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
-.brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand-logo{height:26px;width:auto;display:block}
-.brand .slash{color:var(--accent)}
-.brand-sub{color:var(--muted);font-weight:400;font-size:.92rem;display:none}
-@media(min-width:640px){.brand-sub{display:inline}}
-.nav{display:flex;flex-wrap:wrap;gap:10px 22px;order:3;width:100%;padding-top:12px;border-top:1px solid var(--line)}
-@media(min-width:900px){.nav{order:0;width:auto;margin-left:auto;padding-top:0;border-top:none}}
-.nav a{position:relative;text-decoration:none;color:var(--muted);font-size:.94rem;padding:2px 0;white-space:nowrap}
-.nav a:hover{color:var(--text)}
-.nav a[aria-current="page"]{color:var(--text)}
-.nav a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--accent)}
-.bar .btn--sm{display:none}
-@media(min-width:560px){.bar .btn--sm{display:inline-block}}
-
-/* buttons */
-.btn{
-  display:inline-block;
-  background:var(--accent);
-  color:var(--accent-ink);
-  font-weight:700;
-  font-size:1.02rem;
-  line-height:1.2;
-  text-decoration:none;
-  padding:16px 28px;
-  border-radius:2px;
-  border:1px solid var(--accent);
-  transition:transform .12s ease,background .12s ease;
-  min-height:44px;
-}
-.btn:hover{background:#ffb857;transform:translateY(-1px)}
-.btn:focus-visible{outline:2px solid var(--text);outline-offset:3px}
-.btn--sm{padding:11px 18px;font-size:.92rem}
-.btn-note{color:var(--muted);font-size:.9rem;max-width:36ch}
-.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
-
-/* hero */
-.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
-.hero::before{
-  content:"";position:absolute;inset:0;
+body::before{
+  content:"";position:fixed;inset:0;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:72px 72px;opacity:.22;pointer-events:none;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 78%);
-  mask-image:linear-gradient(to bottom,#000 0%,transparent 78%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 85%);
+  mask-image:linear-gradient(to bottom,#000 0%,transparent 85%);
 }
-.hero .wrap{position:relative;z-index:1;padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(48px,6vw,80px)}
-.hero-grid{display:grid;gap:44px}
-@media(min-width:900px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:end}}
-.kicker{color:var(--accent);margin:0 0 20px}
+.wrap{width:100%;max-width:860px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);position:relative;z-index:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+
+header{border-bottom:1px solid var(--line);position:relative;z-index:1}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em;text-decoration:none;color:inherit}
+.brand-logo{height:26px;width:auto;display:block}
+.bar .mono{color:var(--muted)}
+
+main{flex:1;display:flex;align-items:center;padding-top:clamp(48px,10vh,96px);padding-bottom:clamp(48px,10vh,96px)}
+.kicker{color:var(--accent);margin:0 0 18px}
 h1{
-  font-size:clamp(2.35rem,5.8vw,3.9rem);
-  line-height:1.02;
-  letter-spacing:-.035em;
+  font-size:clamp(2.8rem,9vw,5.2rem);
+  line-height:.98;
+  letter-spacing:-.04em;
   font-weight:700;
-  margin:0 0 22px;
-  max-width:20ch;
+  margin:0 0 24px;
+  max-width:15ch;
 }
-.lede{font-size:clamp(1.02rem,1.5vw,1.16rem);color:var(--muted);max-width:54ch;margin:0 0 32px}
-.lede strong{color:var(--text);font-weight:500}
+.lede{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:48ch;margin:0}
+.lede a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--accent)}
+.lede a:hover{color:var(--accent)}
+.lede a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-/* fiche technique */
-.spec-card{background:var(--ink-2);border:1px solid var(--line);padding:0 22px 8px;margin:0}
-.spec-title{color:var(--accent);padding:16px 0 14px;border-bottom:1px solid var(--line)}
-.spec-card dl{margin:0}
-.spec-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.74rem;line-height:1.45}
-.spec-row:last-child{border-bottom:none}
-.spec-row dt{color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.spec-row dd{margin:0}
-@media(max-width:420px){.spec-row{grid-template-columns:1fr;gap:2px}}
-
-/* sections */
-section{padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px);border-bottom:1px solid var(--line)}
-.section-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,44px)}
-@media(min-width:820px){.section-head{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:end}}
-h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.08;letter-spacing:-.028em;font-weight:700;margin:0;max-width:22ch}
-.sub{color:var(--muted);max-width:58ch;margin:0}
-
-/* services */
-.svc{border-top:1px solid var(--line)}
-.svc-row{display:grid;gap:16px;padding:clamp(26px,4vw,40px) 0;border-bottom:1px solid var(--line)}
-@media(min-width:880px){.svc-row{grid-template-columns:56px minmax(0,1.35fr) minmax(0,.75fr);gap:36px;align-items:start}}
-.svc-num{padding-top:5px;color:var(--accent);margin:0}
-.svc h3{margin:0 0 10px;font-size:clamp(1.25rem,2.2vw,1.6rem);letter-spacing:-.015em;font-weight:500}
-.svc p{margin:0;color:var(--muted);max-width:62ch}
-.svc-tags{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.svc-tags li::before{content:"+ ";color:var(--accent)}
-
-/* methode */
-.steps{display:grid;gap:0;border-top:1px solid var(--line)}
-@media(min-width:860px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.step{padding:26px 0;border-bottom:1px solid var(--line)}
-@media(min-width:860px){
-  .step{border-bottom:none;border-right:1px solid var(--line);padding:26px 24px 6px 0}
-  .step:last-child{border-right:none;padding-right:0}
-  .step:not(:first-child){padding-left:24px}
-}
-.step-num{color:var(--accent);margin:0 0 14px}
-.step h3{margin:0 0 8px;font-size:1.06rem;font-weight:500}
-.step p{margin:0;color:var(--muted);font-size:.95rem;max-width:34ch}
-
-/* preuve */
-.proof{display:grid;gap:36px}
-@media(min-width:880px){.proof{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:start}}
-.proof p{color:var(--muted);max-width:56ch;margin:0 0 18px}
-.proof p strong{color:var(--text);font-weight:500}
-.facts{display:grid;gap:0;border-top:1px solid var(--line);margin-top:26px}
-.fact{display:grid;grid-template-columns:92px minmax(0,1fr);gap:18px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--muted)}
-.fact b{color:var(--accent);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
-
-/* ce que je ne fais pas */
-.nope{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
-.nope li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line);color:var(--muted)}
-.nope .mark{font-family:"JetBrains Mono",ui-monospace,monospace;color:var(--accent);line-height:1.5}
-.nope b{color:var(--text);font-weight:500}
-
-/* faq */
-details{border-top:1px solid var(--line);padding:20px 0}
-details:last-of-type{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;font-weight:500;font-size:1.04rem;display:flex;justify-content:space-between;gap:20px;align-items:center}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:1.15rem}
-details[open] summary::after{content:"−"}
-summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-details p{color:var(--muted);margin:14px 0 0;max-width:64ch}
-
-/* final */
-.final{background:var(--ink-2);border-bottom:none}
-.final h2{max-width:24ch;margin-bottom:14px}
-.final .sub{margin-bottom:30px}
-
-footer{padding:34px 0;color:var(--muted)}
-.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 24px;font-size:.92rem}
+footer{border-top:1px solid var(--line);position:relative;z-index:1}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-top:22px;padding-bottom:22px;color:var(--muted);font-size:.92rem}
 footer a{text-decoration:none;border-bottom:1px solid var(--line)}
 footer a:hover{color:var(--text);border-color:var(--accent)}
 
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -190,221 +81,24 @@ footer a:hover{color:var(--text);border-color:var(--accent)}
   <div class="wrap bar">
     <a class="brand" href="/">
       <img class="brand-logo" src="assets/logo.png" alt="">
-      Dev Affranchi <span class="slash">/</span> <span class="brand-sub">apps, webapps, SaaS et agents IA</span>
+      Dev Affranchi
     </a>
-    <nav class="nav" aria-label="Services">
-      <a href="application-mobile.html">Application mobile</a>
-      <a href="saas.html">SaaS</a>
-      <a href="agent-ia.html">Agent IA</a>
-    </nav>
-    <a class="btn btn--sm" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
+    <div class="mono">Travaux en cours</div>
   </div>
 </header>
 
 <main>
-
-<section class="hero">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="mono kicker">Développeur et fondateur · une équipe qui construit</p>
-        <h1>Ton app, ta webapp, ton SaaS ou ton agent IA.</h1>
-        <p class="lede">On le construit de A à Z et on le met en ligne : apps iOS et Android, webapps, SaaS avec abonnements, automatisations et agents IA branchés sur tes outils. <strong>Tu parles directement à ceux qui construisent, pas à un commercial.</strong></p>
-        <div class="cta-row">
-          <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
-          <div class="btn-note">Un appel pour parler de ton projet. Si je ne suis pas la bonne personne, je te le dis.</div>
-        </div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-title mono">Fiche technique</div>
-        <dl>
-          <div class="spec-row"><dt>Profil</dt><dd>Développeur et fondateur</dd></div>
-          <div class="spec-row"><dt>Expérience</dt><dd>10 ans, du mobile au SaaS</dd></div>
-          <div class="spec-row"><dt>Plateformes</dt><dd>iOS · Android · Web</dd></div>
-          <div class="spec-row"><dt>Paiements</dt><dd>Stripe · RevenueCat</dd></div>
-          <div class="spec-row"><dt>IA</dt><dd>Claude · OpenAI · Hermes</dd></div>
-          <div class="spec-row"><dt>Livraison</dt><dd>Code, accès, documentation</dd></div>
-        </dl>
-      </div>
-    </div>
+    <p class="mono kicker">Site en travaux</p>
+    <h1>En construction.</h1>
+    <p class="lede">Le site revient bientôt. Les pages services sont en cours de mise à jour. Pour me joindre avant, écris à <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a>.</p>
   </div>
-</section>
-
-<section id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ce que je construis</h2>
-      <p class="sub">Quatre types de projets, le même principe : un périmètre écrit, des livraisons chaque semaine, un produit en ligne à la fin.</p>
-    </div>
-    <div class="svc">
-      <div class="svc-row">
-        <p class="svc-num mono">01</p>
-        <div>
-          <h3>Application mobile</h3>
-          <p>Une app iOS et Android à partir d'une seule base de code, publiée sur les deux stores. Comptes utilisateurs, notifications, achats intégrés, abonnements, et de l'IA quand elle sert vraiment l'utilisateur.</p>
-        </div>
-        <ul class="svc-tags">
-          <li>iOS et Android</li>
-          <li>Publication App Store et Google Play</li>
-          <li>Abonnements in-app</li>
-          <li>Notifications et analytics</li>
-        </ul>
-      </div>
-      <div class="svc-row">
-        <p class="svc-num mono">02</p>
-        <div>
-          <h3>Webapp</h3>
-          <p>Une application web sur mesure : espace client, outil interne, portail de gestion. Comptes et rôles, données, exports, intégrations. La version outillée de ton métier, sans le détour par un tableur.</p>
-        </div>
-        <ul class="svc-tags">
-          <li>Espace client et portail</li>
-          <li>Rôles et permissions</li>
-          <li>Données et exports</li>
-          <li>Intégrations API</li>
-        </ul>
-      </div>
-      <div class="svc-row">
-        <p class="svc-num mono">03</p>
-        <div>
-          <h3>SaaS</h3>
-          <p>Un produit web complet : création de compte, plans et abonnements Stripe, tableau de bord, back-office, emails transactionnels. Déployé sur ton domaine, pas laissé sur un serveur de test.</p>
-        </div>
-        <ul class="svc-tags">
-          <li>Authentification</li>
-          <li>Abonnements Stripe</li>
-          <li>Dashboard et back-office</li>
-          <li>Déploiement et domaine</li>
-        </ul>
-      </div>
-      <div class="svc-row">
-        <p class="svc-num mono">04</p>
-        <div>
-          <h3>Automatisation et agent IA</h3>
-          <p>Un agent qui répond à tes clients, qualifie tes leads, trie tes documents ou relie tes outils entre eux. Branché sur leurs API, avec des garde-fous, des logs et un coût par requête que tu peux suivre.</p>
-        </div>
-        <ul class="svc-tags">
-          <li>API Claude et OpenAI</li>
-          <li>Webhooks et tâches planifiées</li>
-          <li>Garde-fous et logs</li>
-          <li>Suivi du coût par requête</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="methode">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Comment ça se passe</h2>
-      <p class="sub">Pas de tunnel de six mois. On part d'un périmètre court, on livre vite, et on élargit une fois que le produit tourne.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <p class="step-num mono">01</p>
-        <h3>L'appel</h3>
-        <p>On parle de ton projet, de ce qui existe déjà et de ce qui te bloque. Je te dis si c'est faisable, dans quel ordre, et si je suis la bonne personne.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">02</p>
-        <h3>Le cadrage</h3>
-        <p>Je te remets un périmètre écrit : ce que je livre, ce que je ne livre pas, le délai et le prix. Tu valides avant que j'écrive la première ligne.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">03</p>
-        <h3>La construction</h3>
-        <p>On livre chaque semaine quelque chose qui tourne, pas des slides. Tu testes sur ton téléphone, tu donnes ton avis, on ajuste.</p>
-      </div>
-      <div class="step">
-        <p class="step-num mono">04</p>
-        <h3>La mise en ligne</h3>
-        <p>Publication sur les stores ou déploiement en production. Puis le repo, les accès et la doc. Le code t'appartient.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap proof">
-    <div>
-      <h2>Une équipe qui construit, pas un service commercial.</h2>
-    </div>
-    <div>
-      <p>Tu m'expliques ton projet, on le cadre ensemble, et l'équipe construit. <strong>Ce que tu dis le lundi n'est pas perdu en route.</strong></p>
-      <p>Je construis et j'exploite mes propres produits depuis des années : un SaaS pour les réparateurs de smartphones en France, un outil d'automatisation ASO, des apps mobiles avec de l'IA embarquée. Je connais le coût réel d'un produit, pas seulement le code.</p>
-      <div class="facts">
-        <div class="fact"><b>En prod</b><span>mes propres produits, pas seulement ceux des clients</span></div>
-        <div class="fact"><b>Équipe</b><span>plusieurs profils qui construisent, un interlocuteur direct</span></div>
-        <div class="fact"><b>De A à Z</b><span>du cadrage à la mise en ligne</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Ce que je ne fais pas</h2>
-      <p class="sub">Autant le dire tout de suite, ça évite un appel inutile des deux côtés.</p>
-    </div>
-    <ul class="nope">
-      <li><span class="mark">[–]</span><span><b>Des sites vitrines et des refontes graphiques.</b> Ce n'est pas mon métier, et quelqu'un d'autre le fera mieux.</span></li>
-      <li><span class="mark">[–]</span><span><b>Les missions où je parle à un intermédiaire.</b> Le client final doit être dans la conversation, sinon le projet part de travers.</span></li>
-      <li><span class="mark">[–]</span><span><b>Les projets sans périmètre ni budget.</b> On peut commencer petit, mais on commence cadré.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Les questions qui reviennent</h2>
-      <p class="sub">Et si la tienne n'y est pas, pose-la à l'appel.</p>
-    </div>
-    <details>
-      <summary>Combien coûte un projet ?</summary>
-      <p>Ça dépend du périmètre, et je ne donne pas de chiffre au hasard. Après l'appel et le cadrage, tu reçois un montant fixe avec ce qui est inclus. Si le projet évolue, on fait un avenant, pas une facture surprise.</p>
-    </details>
-    <details>
-      <summary>Combien de temps ?</summary>
-      <p>Une app simple peut être en ligne en quelques semaines. Un SaaS avec abonnements et back-office prend plus longtemps. Je te donne un délai au cadrage et je te préviens dès qu'il y a un risque de dérapage.</p>
-    </details>
-    <details>
-      <summary>Qui code ?</summary>
-      <p>Une équipe de développement, que je pilote. Je reste ton interlocuteur pour le cadrage et les décisions techniques. Tu ne passes pas par un commercial.</p>
-    </details>
-    <details>
-      <summary>À qui appartient le code, et après la livraison ?</summary>
-      <p>Le code t'appartient. Je te livre le repo, les accès aux services et la documentation. Pour la suite, on décide au cadrage : je peux assurer les mises à jour et les évolutions, ou te laisser autonome avec la doc.</p>
-    </details>
-    <details>
-      <summary>Tu peux ajouter de l'IA à un produit existant ?</summary>
-      <p>Oui. Un agent ou une automatisation peut se brancher sur un produit déjà en ligne sans tout réécrire. C'est souvent le projet le plus rapide à mettre en place.</p>
-    </details>
-    <details>
-      <summary>Tu reprends un projet commencé par quelqu'un d'autre ?</summary>
-      <p>Oui, après un audit du code. Je te dis ce qui est récupérable et ce qu'il faut refaire, sans te vendre une réécriture complète par principe.</p>
-    </details>
-  </div>
-</section>
-
-<section class="final">
-  <div class="wrap">
-    <h2>Un projet en tête ?</h2>
-    <p class="sub">Réserve un créneau. On parle de ton idée, de ton produit ou de ce qui bloque. Tu repars avec un avis franc, même si on ne travaille pas ensemble.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://tidycal.com/dha/ia" target="_blank" rel="noopener">Réserver un créneau</a>
-      <div class="btn-note">Réservation en ligne, tu choisis le créneau qui t'arrange.</div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer>
   <div class="wrap foot">
-    <div>Dev Affranchi · apps mobiles, webapps, SaaS et agents IA</div>
-    <div><a href="https://www.youtube.com/@devaffranchi">YouTube</a> · <a href="mailto:devaffranchi@gmail.com">devaffranchi@gmail.com</a></div>
+    <div>Dev Affranchi</div>
+    <div><a href="https://www.youtube.com/@devaffranchi">YouTube</a> · <a href="mailto:devaffranchi@gmail.com">Email</a></div>
   </div>
 </footer>
 
