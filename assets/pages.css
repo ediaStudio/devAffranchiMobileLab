@@ -28,7 +28,7 @@ a{color:inherit}
 .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
 
 /* header */
-header{border-bottom:1px solid var(--line);background:var(--ink)}
+header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);background:var(--ink)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
 .brand{font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand-logo{height:26px;width:auto;display:block}
